@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendation</title>
+</head>
+<body>
+<form class="mealsBox" method="POST">
+    推荐菜品:
+    {% for value in result %}
+    <div class="mealBox">
+        {{result.index(value)+1}}.
+        菜品名称: {{value[0]}}<br>
+        评分次数: {{value[2]}}<br>
+        平均分数: {{value[3]}}
+        <img src="{{ url_for('static', filename='img/' + value[0] + '.jpg') }}">
+        您的评分:<input type="text" oninput="if(value <= 0 || value >5) value='';"
+                    name="{{value[1] + ':'}}"/><br>
+
+        <br><br><br>
+    </div>
+    {% endfor %}
+    <p><input type="submit"/></p>
+</form>
+</table>
+</body>
+</html>
